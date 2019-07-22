@@ -1,0 +1,40 @@
+all: test-all
+	./testRelational
+	./testArithmetic
+	./testio
+	./testexception
+
+test-all: testRelational testArithmetic testio testexception
+
+run-testRelational: testRelational
+		./testRelational
+
+testRelational: Fraction.h Fraction.cpp testRelational.cpp 
+		g++ -Wall Fraction.cpp testRelational.cpp -o testRelational
+
+
+run-testArithmetic: testArithmetic
+		./testArithmetic
+
+testArithmetic: Fraction.h Fraction.cpp testArithmetic.cpp 
+		g++ -Wall Fraction.cpp testArithmetic.cpp -o testArithmetic
+
+
+run-testio: testio
+		./testio
+
+testio: Fraction.h Fraction.cpp testio.cpp 
+		g++ -Wall Fraction.cpp testio.cpp -o testio
+
+
+run-testexception: testexception
+		./testexception
+
+testexception: Fraction.h Fraction.cpp testexception.cpp 
+		g++ -Wall Fraction.cpp testexception.cpp -o testexception
+
+clean:
+		rm testRelational
+		rm testArithmetic
+		rm testio
+		rm testexception
